@@ -50,7 +50,8 @@
 
 
 ## ERD
-![스크린샷 2024-04-05 오후 12 41 00](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/e9bce809-ab75-48bb-8066-c71927bb7446)
+![스크린샷 2024-04-08 오전 10 39 09](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/782a861c-f51b-4265-8a0e-2cdd513a7415)
+
 
 ## MileStone
 * dummy 데이터 생성 : ~ 4월7일
