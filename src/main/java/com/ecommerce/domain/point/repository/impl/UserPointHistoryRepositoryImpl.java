@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class UserPointHistoryRepositoryImpl implements UserPointHistoryRepository {
     private final UserPointHistoryJpaRepository userPointHistoryJpaRepository;
     @Override
-    public void save(UserPointHistory history) {
-        userPointHistoryJpaRepository.save(history);
+    public UserPointHistory save(UserPointHistory history) {
+        return userPointHistoryJpaRepository.save(history);
     }
 }

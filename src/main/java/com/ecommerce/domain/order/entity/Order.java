@@ -1,20 +1,14 @@
-package com.ecommerce.domain.point.entity;
+package com.ecommerce.domain.order.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.ZonedDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@Table(name="UserPoint")
 @Entity
-public class UserPoint {
+@Table(name="Order")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
@@ -23,8 +17,22 @@ public class UserPoint {
     @Column(name = "user_id", nullable = false)
     Long userId;
 
-    @Column(name="point", nullable = false)
-    Long point;
+    @Column(name = "total_price", nullable = false)
+    Long totalPrice;
+
+    @Column(name = "total_count", nullable = false)
+    Integer totalCount;
+
+    @Column(name = "receiver_name", nullable = false)
+    String receiverName;
+
+    @Column(name = "receiver_name", nullable = false)
+    String receiverPhone;
+
+    @Column(name = "receiver_address", nullable = false)
+    String receiverAddress;
+
+    // 배송 상태 추가하기
 
     @CreationTimestamp
     @Column(name="created_at", nullable = false, insertable = true, updatable = false)
@@ -33,16 +41,4 @@ public class UserPoint {
     @UpdateTimestamp
     @Column(name="updated_at", nullable = true, insertable = false, updatable = true)
     ZonedDateTime updatedAt;
-
-    public UserPoint(Long userId, Long point){
-        this.userId = userId;
-        this.point = point;
-    }
-    public UserPoint(Long id, Long userId, Long point, ZonedDateTime createdAt, ZonedDateTime updatedAt){
-        this.id = id;
-        this.userId = userId;
-        this.point = point;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 }

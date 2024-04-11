@@ -32,7 +32,7 @@ public class PointController {
             @RequestBody @Valid PointDto pointDto
     ){
         return ResponseEntity.ok().body(
-                pointService.chargePoints(userId, pointDto.getPoint())
+                pointService.chargePoint(userId, pointDto.getPoint())
         );
 
     }
@@ -46,15 +46,8 @@ public class PointController {
     public ResponseEntity<PointResponseDto> getPoint(
             @PathVariable(value = "user_id", required = true) Long userId
     ){
-        //PointResponseDto result = new PointResponseDto(0L,userId,1000L, ZonedDateTime.now(), null);
-        PointResponseDto result = PointResponseDto.builder()
-                .id(0L)
-                .userId(userId)
-                .point(1000L)
-                .createdAt(ZonedDateTime.now())
-                .updatedAt(null)
-                .build();
-
-        return ResponseEntity.ok().body(result);
+        return ResponseEntity.ok().body(
+                pointService.getPoint(userId)
+        );
     }
 }
