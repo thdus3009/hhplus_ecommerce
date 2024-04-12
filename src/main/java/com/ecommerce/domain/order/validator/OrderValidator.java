@@ -28,6 +28,13 @@ public class OrderValidator {
         }
         return totalPrice;
     }
+
+    /**
+     *
+     * @param orderRequestDto 주문요청 requestBody
+     * @param itemStock 주문하려는 상품의 재고 정보
+     * @return
+     */
     public Long orderQuantityCheck(OrderRequestDto orderRequestDto, ItemStock itemStock){
         Long itemCnt = orderRequestDto.getItems().stream()
                 .filter(dto -> dto.getItemId()==itemStock.getItemId())

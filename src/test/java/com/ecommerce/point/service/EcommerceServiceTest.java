@@ -1,11 +1,11 @@
-package com.ecommerce.service;
+package com.ecommerce.point.service;
 
 import com.ecommerce.api.point.dto.PointResponseDto;
 import com.ecommerce.common.exception.CustomException;
 import com.ecommerce.common.exception.ErrorCode;
 import com.ecommerce.domain.point.service.PointService;
-import com.ecommerce.stub.point.UserPointHistoryManagerStub;
-import com.ecommerce.stub.point.UserPointManagerStub;
+import com.ecommerce.point.stub.UserPointHistoryManagerStub;
+import com.ecommerce.point.stub.UserPointManagerStub;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

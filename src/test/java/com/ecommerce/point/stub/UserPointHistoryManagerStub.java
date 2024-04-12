@@ -1,4 +1,4 @@
-package com.ecommerce.stub.point;
+package com.ecommerce.point.stub;
 
 import com.ecommerce.domain.point.entity.UserPointHistory;
 import com.ecommerce.domain.point.infrastructure.PointHistoryManager;

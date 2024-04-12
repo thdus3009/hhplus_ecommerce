@@ -29,19 +29,7 @@ public class OrderController {
     public ResponseEntity<OrderResponseDto> getItem(
             @RequestBody @Valid OrderRequestDto orderRequestDto
     ){
-        orderService.save(orderRequestDto);
-
-        OrderResponseDto result = OrderResponseDto.builder()
-                .id(0L)
-                .userId(orderRequestDto.getUserId())
-                .totalPrice(35000L)
-                .totalCount(orderRequestDto.calculateTotalItemCnt())
-                .receiverName("김소연")
-                .receiverPhone("010-7702-8247")
-                .receiverAddress("언주로100길 17")
-                .orderDate(ZonedDateTime.now())
-                .build();
-
-        return ResponseEntity.ok().body(result);
+        return ResponseEntity.ok().body(
+                orderService.save(orderRequestDto));
     }
 }
