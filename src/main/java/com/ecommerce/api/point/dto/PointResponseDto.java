@@ -1,10 +1,7 @@
 package com.ecommerce.api.point.dto;
 
-import com.ecommerce.domain.point.entity.UserPoint;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.ZonedDateTime;
 

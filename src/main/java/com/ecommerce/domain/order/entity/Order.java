@@ -1,44 +1,51 @@
 package com.ecommerce.domain.order.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Getter;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.ZonedDateTime;
+import java.util.List;
+import java.util.UUID;
 
+@Getter
+@Builder
 @Entity
 @Table(name="Order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
-    Long id = 0L;
+    private Long id = 0L;
+
+    // uuid(유효아이디)
+    @Column(name="uuid", nullable = false, unique = true)
+    private String uuid = UUID.randomUUID().toString();
 
     @Column(name = "user_id", nullable = false)
-    Long userId;
+    private Long userId;
 
     @Column(name = "total_price", nullable = false)
-    Long totalPrice;
+    private Long totalPrice;
 
     @Column(name = "total_count", nullable = false)
-    Integer totalCount;
+    private Long totalCount;
 
     @Column(name = "receiver_name", nullable = false)
-    String receiverName;
+    private String receiverName;
 
     @Column(name = "receiver_name", nullable = false)
-    String receiverPhone;
+    private String receiverPhone;
 
     @Column(name = "receiver_address", nullable = false)
-    String receiverAddress;
+    private String receiverAddress;
 
-    // 배송 상태 추가하기
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems;
 
     @CreationTimestamp
-    @Column(name="created_at", nullable = false, insertable = true, updatable = false)
-    ZonedDateTime createdAt;
-
-    @UpdateTimestamp
-    @Column(name="updated_at", nullable = true, insertable = false, updatable = true)
-    ZonedDateTime updatedAt;
+    @Column(name="order_date", nullable = false, insertable = true, updatable = false)
+    private ZonedDateTime orderDate;
 }

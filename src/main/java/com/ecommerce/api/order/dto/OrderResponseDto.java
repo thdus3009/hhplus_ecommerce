@@ -9,6 +9,7 @@ import java.time.ZonedDateTime;
 @Builder
 public class OrderResponseDto {
     private Long id;
+    private Long uuid;
     private Long userId;
     private Long totalPrice;
     private Long totalCount;

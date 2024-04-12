@@ -54,10 +54,10 @@ public class PointService {
      * @return
      */
     public PointResponseDto getPoint(Long userId) {
-        Optional<UserPoint> userPoint = pointManager.check(userId);
-        UserPoint newUserPoint = userPoint.orElseThrow(() -> new CustomException(ErrorCode.USER_POINT_NULL));
-
-        return toDto(newUserPoint);
+        // validator에 넣기
+        UserPoint userPoint = pointManager.check(userId)
+                .orElseThrow(() -> new CustomException(ErrorCode.USER_POINT_NULL));
+        return toDto(userPoint);
     }
 
     public PointResponseDto toDto(UserPoint newUserPoint){

@@ -3,6 +3,7 @@ package com.ecommerce.api.order.controller;
 import com.ecommerce.api.item.dto.ItemResponseDto;
 import com.ecommerce.api.order.dto.OrderRequestDto;
 import com.ecommerce.api.order.dto.OrderResponseDto;
+import com.ecommerce.domain.order.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import java.time.ZonedDateTime;
 @RequestMapping("/orders")
 @RestController
 public class OrderController {
+    private final OrderService orderService;
     @Operation(
             summary = "상품 주문",
             description = "상품들을 주문/결제한다.",
@@ -27,6 +29,7 @@ public class OrderController {
     public ResponseEntity<OrderResponseDto> getItem(
             @RequestBody @Valid OrderRequestDto orderRequestDto
     ){
+        orderService.save(orderRequestDto);
 
         OrderResponseDto result = OrderResponseDto.builder()
                 .id(0L)

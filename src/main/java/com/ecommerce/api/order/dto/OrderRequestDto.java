@@ -15,6 +15,12 @@ public class OrderRequestDto {
     private Long userId;
     private List<OrderItemDto> items;
 
+    private String receiverName;
+
+    private String receiverPhone;
+
+    private String receiverAddress;
+
     public Long calculateTotalItemCnt(){
         return items.stream()
                 .mapToLong(OrderItemDto::getItemCount)

@@ -11,7 +11,7 @@ public class ItemResponseDto {
     private Long id;
     private String name;
     private Long price;
-    private Long itemCount;
+    private Long quantity;
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 }

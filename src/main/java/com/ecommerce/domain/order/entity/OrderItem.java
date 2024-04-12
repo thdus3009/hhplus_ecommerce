@@ -1,20 +1,23 @@
 package com.ecommerce.domain.order.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.IdClass;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
-@IdClass(OrderItemPK.class)
+@Builder
 @Entity
 @Table(name="OrderItem")
 public class OrderItem {
-    @Column(name = "order_id", nullable = false)
-    private Long orderId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
+    private Long id = 0L;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @Column(name = "item_id", nullable = false)
     private Long itemId;
@@ -23,8 +26,9 @@ public class OrderItem {
     private String itemName;
 
     @Column(name = "item_count", nullable = false)
-    private Integer itemCount;
+    private Long itemCount;
 
     @Column(name = "item_price", nullable = false)
     private Long itemPrice;
+
 }

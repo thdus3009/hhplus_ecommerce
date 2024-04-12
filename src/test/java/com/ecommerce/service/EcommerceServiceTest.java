@@ -1,7 +1,8 @@
 package com.ecommerce.service;
 
 import com.ecommerce.api.point.dto.PointResponseDto;
-import com.ecommerce.domain.point.entity.UserPoint;
+import com.ecommerce.common.exception.CustomException;
+import com.ecommerce.common.exception.ErrorCode;
 import com.ecommerce.domain.point.service.PointService;
 import com.ecommerce.stub.point.UserPointHistoryManagerStub;
 import com.ecommerce.stub.point.UserPointManagerStub;
@@ -9,8 +10,6 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.Optional;
 
 @SpringBootTest(classes = EcommerceServiceTest.class)
 public class EcommerceServiceTest {
@@ -49,4 +48,13 @@ public class EcommerceServiceTest {
         Assertions.assertThat(res.getPoint()).isEqualTo(15000L);
     }
 
+    @Test
+    public void 포인트_조회_실패(){
+        // given
+        Long userId = 2L;
+        // when then
+        Assertions.assertThatThrownBy(()-> pointService.getPoint(userId))
+                .isInstanceOf(CustomException.class)
+                .hasMessage(ErrorCode.USER_POINT_NULL);
+    }
 }
