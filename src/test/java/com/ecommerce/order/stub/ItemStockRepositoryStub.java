@@ -1,7 +1,7 @@
 package com.ecommerce.order.stub;
 
-import com.ecommerce.domain.item.entity.ItemStock;
-import com.ecommerce.domain.item.infrastructure.ItemStockRepository;
+import com.ecommerce.item.entity.ItemStock;
+import com.ecommerce.item.domain.infrastructure.ItemStockRepository;
 
 import java.util.List;
 

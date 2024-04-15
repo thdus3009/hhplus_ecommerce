@@ -1,7 +1,7 @@
 package com.ecommerce.order.stub;
 
-import com.ecommerce.domain.point.entity.UserPoint;
-import com.ecommerce.domain.point.repository.UserPointRepository;
+import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userPoint.domain.repository.UserPointRepository;
 
 import java.util.Optional;
 
