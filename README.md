@@ -50,7 +50,9 @@
 
 
 ## ERD
-![스크린샷 2024-04-08 오전 10 39 09](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/782a861c-f51b-4265-8a0e-2cdd513a7415)
+![스크린샷 2024-04-15 오후 3 29 38](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/23073521-41df-4ed4-a1bd-c27ccc24d58f)
+
+
 
 
 ## MileStone
