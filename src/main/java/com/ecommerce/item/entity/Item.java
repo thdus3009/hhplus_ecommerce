@@ -34,9 +34,16 @@ public class Item {
 
     @UpdateTimestamp
     @Column(name="updated_at", nullable = true, insertable = false, updatable = true)
-    ZonedDateTime updatedAt;
+    ZonedDateTime updatedAt = null;
 
-    public void decreaseQuantity(Long quantity){
-        this.quantity = this.quantity - quantity;
+    public Item(Long id, String name, Long price, Long quantity, ZonedDateTime createdAt){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.createdAt = createdAt;
+    }
+    public void updateQuantity(Long quantity){
+        this.quantity = quantity;
     }
 }

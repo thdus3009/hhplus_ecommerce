@@ -1,10 +1,12 @@
 package com.ecommerce.order.entity;
 
+import com.ecommerce.item.entity.Item;
 import com.ecommerce.item.entity.OrderItemStatus;
 import com.ecommerce.userPoint.entity.PointStatus;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
@@ -20,14 +22,15 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @Column(name = "item_id", nullable = false)
-    private Long itemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id", nullable = false)
+    private Item item;
 
     @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
     private OrderItemStatus status = OrderItemStatus.READY;
 
-    @Column(name = "item_name", nullable = true)
+    @Column(name = "description", nullable = true)
     private String description = null;
 
     @Column(name = "item_name", nullable = false)

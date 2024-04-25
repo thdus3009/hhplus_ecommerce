@@ -10,7 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.ZonedDateTime;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @Table(name="UserPoint")
 @Entity
@@ -51,5 +50,10 @@ public class UserPoint {
     }
     public void add(Long chargePoint){
         this.point = this.point+chargePoint;
+    }
+    public void isEnoughPointToPay(Long usePoint){
+        if(this.point<usePoint){
+            throw new IllegalArgumentException((usePoint-this.point)+"만큼의 잔액이 부족합니다.");
+        }
     }
 }

@@ -1,5 +1,9 @@
 package com.ecommerce.item.api.dto;
 
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
 public class PopularItemResponseDto {
     private Long itemId;
     private String name;

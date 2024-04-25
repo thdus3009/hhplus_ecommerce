@@ -21,7 +21,6 @@ public class UserPointRepositoryImpl implements UserPointRepository {
     }
 
     @Override
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public UserPoint save(UserPoint point) {
         return userPointJpaRepository.save(point);
     }

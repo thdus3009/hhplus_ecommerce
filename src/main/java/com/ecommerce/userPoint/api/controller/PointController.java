@@ -24,7 +24,7 @@ public class PointController {
         tags = "포인트"
     )
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping(value = "/{user_id}/charge", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{user_id}/charge", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PointResponseDto> chargePoint(
             @PathVariable(value = "user_id", required = true) Long userId,
             @RequestBody @Valid PointDto pointDto

@@ -1,5 +1,7 @@
 package com.ecommerce.order.domain.service;
 
+import com.ecommerce.common.exception.CustomException;
+import com.ecommerce.common.exception.ErrorCode;
 import com.ecommerce.item.entity.Item;
 import com.ecommerce.item.entity.ItemStock;
 import com.ecommerce.item.domain.service.ItemService;
@@ -12,7 +14,9 @@ import com.ecommerce.userPoint.domain.service.PointService;
 import com.ecommerce.userPoint.entity.UserPoint;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -31,11 +35,19 @@ public class OrderUseCase {
         this.applicationEventPublisher = applicationEventPublisher;
     }
 
+    @Transactional
     public OrderResponseDto order(OrderRequestDto orderRequestDto){
-        List<Long> itemIds = (List<Long>) orderRequestDto.getItems()
-                .stream()
-                .map(OrderItemDto::getItemId)
-                .toList();
+        // requestDto에 items 있는지 확인
+        List<Long> itemIds = new ArrayList<>();
+        if(orderRequestDto.isItemsNotEmpty()){
+            itemIds = (List<Long>) orderRequestDto.getItems()
+                    .stream()
+                    .map(OrderItemDto::getItemId)
+                    .toList();
+        }else {
+            throw new CustomException(ErrorCode.ITEM_NULL);
+        }
+
         // 품절 확인 & 재고 조회
         List<ItemStock> itemStocks = itemStockService.checkByIds(itemIds);
         List<Item> items = itemService.getItemsFromOrder(itemIds);
@@ -44,10 +56,10 @@ public class OrderUseCase {
                 orderRequestDto.getUserId(),
                 orderRequestDto.getTotalPrice()
         );
-        // 재고 차감 (db락)
-        itemStockService.decreaseQuantity(itemStocks, orderRequestDto.getItems());
+        // 재고 차감
+        List<ItemStock> updateItemStocks = itemStockService.decreaseQuantity(itemStocks, orderRequestDto.getItems());
         // 상품 재고 차감
-        itemService.updateQuantity(items, orderRequestDto.getItems());
+        itemService.updateQuantity(items, updateItemStocks);
         // 주문
         OrderAndOrderItems orderAndOrderItems = orderService.order(orderRequestDto, items);
         // 이벤트 핸들러 > 통계자료 전송

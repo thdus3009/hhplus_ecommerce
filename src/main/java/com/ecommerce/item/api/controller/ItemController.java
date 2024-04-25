@@ -41,7 +41,7 @@ public class ItemController {
             tags = "상품"
     )
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<PopularItemResponseDto>> findItems(
             @RequestBody @Valid ItemRequestDto itemRequestDto
     ){

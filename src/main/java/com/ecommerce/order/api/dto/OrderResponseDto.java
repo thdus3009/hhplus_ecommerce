@@ -4,6 +4,7 @@ import com.ecommerce.order.entity.Order;
 import com.ecommerce.order.entity.OrderItem;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class OrderResponseDto {
         List<OrderItemDetailDto> orderItemDetailDtos = new ArrayList<>();
         for (OrderItem orderItem : orderItems){
             orderItemDetailDtos.add(new OrderItemDetailDto(
-                    orderItem.getItemId(),
+                    orderItem.getItem().getId(),
                     orderItem.getItemName(),
                     orderItem.getItemCount(),
                     orderItem.getItemPrice()
@@ -36,38 +37,5 @@ public class OrderResponseDto {
                 ))
                 .orderItems(orderItemDetailDtos)
                 .build();
-    }
-}
-
-class OrderDto{
-    private String uuid;
-    private Long userId;
-    private Long totalPrice;
-    private Long totalCount;
-    private String receiverName;
-    private String receiverPhone;
-    private String receiverAddress;
-
-    public OrderDto(String uuid, Long userId, Long totalPrice, Long totalCount, String receiverName, String receiverPhone, String receiverAddress) {
-        this.uuid = uuid;
-        this.userId = userId;
-        this.totalPrice = totalPrice;
-        this.totalCount = totalCount;
-        this.receiverName = receiverName;
-        this.receiverPhone = receiverPhone;
-        this.receiverAddress = receiverAddress;
-    }
-}
-class OrderItemDetailDto{
-    private Long itemId;
-    private String itemName;
-    private Long itemCount;
-    private Long itemPrice;
-
-    public OrderItemDetailDto(Long itemId, String itemName, Long itemCount, Long itemPrice) {
-        this.itemId = itemId;
-        this.itemName = itemName;
-        this.itemCount = itemCount;
-        this.itemPrice = itemPrice;
     }
 }

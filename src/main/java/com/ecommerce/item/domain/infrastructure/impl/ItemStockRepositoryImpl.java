@@ -13,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Component
 public class ItemStockRepositoryImpl implements ItemStockRepository {
-    //private final ItemStockQuerydslRepository itemStockQuerydslRepository;
     private final ItemStockJpaRepository itemStockJpaRepository;
     @Override
     public List<ItemStock> findByItemIds(List<Long> itemIds) {
@@ -21,7 +20,6 @@ public class ItemStockRepositoryImpl implements ItemStockRepository {
     }
 
     @Override
-    @Lock(LockModeType.PESSIMISTIC_WRITE)
     public List<ItemStock> saveAll(List<ItemStock> itemStocks) {
         return itemStockJpaRepository.saveAll(itemStocks);
     }

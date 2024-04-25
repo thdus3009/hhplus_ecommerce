@@ -14,14 +14,6 @@ public class PointResponseDto{
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 
-//    public PointResponseDto(UserPoint userPoint) {
-//        this.id = userPoint.getId();
-//        this.userId = userPoint.getUserId();
-//        this.point = userPoint.getPoint();
-//        this.createdAt = userPoint.getCreatedAt();
-//        this.updatedAt = userPoint.getUpdatedAt();
-//    }
-
 //    public PointResponseDto(Long id, Long userId, Long point, ZonedDateTime createdAt, ZonedDateTime updatedAt) {
 //        this.id = id;
 //        this.userId = userId;

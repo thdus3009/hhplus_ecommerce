@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @Builder
 @Entity
-@Table(name="Order")
+@Table(name="Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Order {
 
     // uuid(유효아이디)
     @Column(name="uuid", nullable = false, unique = true)
-    private String uuid = UUID.randomUUID().toString();
+    private String uuid;
 
     @Column(name = "user_id", nullable = false)
     private Long userId;
@@ -35,7 +35,7 @@ public class Order {
     @Column(name = "receiver_name", nullable = false)
     private String receiverName;
 
-    @Column(name = "receiver_name", nullable = false)
+    @Column(name = "receiver_phone", nullable = false)
     private String receiverPhone;
 
     @Column(name = "receiver_address", nullable = false)

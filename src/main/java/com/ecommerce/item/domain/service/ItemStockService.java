@@ -11,18 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@AllArgsConstructor
 @Service
 public class ItemStockService {
-    private final ItemValidator itemValidator;
-    private final ItemStockRepository itemStockRepository;
+
     private final ItemStockManager itemStockManager;
 
+    public ItemStockService(ItemStockManager itemStockManager){
+        this.itemStockManager = itemStockManager;
+    }
     @Transactional(propagation = Propagation.REQUIRED)
     public List<ItemStock> checkByIds(List<Long> itemIds) {
-        List<ItemStock> itemStocks = itemStockRepository.findByItemIds(itemIds);
-        itemValidator.quantityZeroCheck(itemStocks);
-        return itemStocks;
+        return itemStockManager.checkByIds(itemIds);
     }
 
     public List<ItemStock> decreaseQuantity(List<ItemStock> itemStocks, List<OrderItemDto> itemDtos) {
