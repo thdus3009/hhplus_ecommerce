@@ -9,13 +9,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@Builder
+@NoArgsConstructor
 @Entity
 @Table(name="OrderItem")
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Builder.Default
     @Column(name = "id", nullable = false, updatable = false)
     private Long id = 0L;
 
@@ -28,11 +27,9 @@ public class OrderItem {
     private Item item;
 
     @Enumerated(EnumType.STRING)
-    @Builder.Default
     @Column(name = "status", nullable = false)
     private OrderItemStatus status = OrderItemStatus.READY;
 
-    @Builder.Default
     @Column(name = "description", nullable = true)
     private String description = null;
 
@@ -45,7 +42,13 @@ public class OrderItem {
     @Column(name = "item_price", nullable = false)
     private Long itemPrice;
 
-    public OrderItem() {
-
+    public OrderItem(Order order, Item item, OrderItemStatus status, String description, String itemName, Long itemCount, Long itemPrice) {
+        this.order = order;
+        this.item = item;
+        this.status = status;
+        this.description = description;
+        this.itemName = itemName;
+        this.itemCount = itemCount;
+        this.itemPrice = itemPrice;
     }
 }

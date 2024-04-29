@@ -30,14 +30,9 @@ public class OrderItemManager {
                     .orElseThrow(() -> new CustomException(ErrorCode.ORDER_ITEM_NOT_FOUND)
                 );
             orderItems.add(
-                    OrderItem.builder()
-                            .order(order)
-                            .item(item)
-                            .status(OrderItemStatus.READY)
-                            .itemName(item.getName())
-                            .itemCount(orderItemDto.getItemCount())
-                            .itemPrice(item.getPrice())
-                            .build()
+                    new OrderItem(
+                            order, item, OrderItemStatus.READY,null,"abc 후드티",1L,5000L
+                    )
             );
         }
         orderItemRepository.saveAll(orderItems);

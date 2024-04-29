@@ -41,16 +41,9 @@ public class StubData {
         Order order = new Order("asdf1234",1L,totalPrice,1L,"김소연","01011112222","서울특별시 강남구");
         Item item = new Item(1L, "상품1", 5000L, 1L, ZonedDateTime.now());
         List<OrderItem> orderItems = List.of(
-                OrderItem.builder()
-                        .id(1L)
-                        .order(order)
-                        .item(item)
-                        .status(OrderItemStatus.READY)
-                        .itemName("abc 후드티")
-                        .description(null)
-                        .itemPrice(5000L)
-                        .itemCount(1L)
-                        .build()
+                new OrderItem(
+                        order, item, OrderItemStatus.READY,null,"abc 후드티",1L,5000L
+                )
         );
         return new OrderAndOrderItems(
                 order,

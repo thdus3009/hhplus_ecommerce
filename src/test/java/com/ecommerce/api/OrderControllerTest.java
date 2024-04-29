@@ -153,16 +153,9 @@ public class OrderControllerTest {
         Order order = new Order("asdf1234",1L,35000L,1L,"김소연","01011112222","서울특별시 강남구");;
         Item item = new Item(1L, "상품1", 5000L, 1L, ZonedDateTime.now());
         List<OrderItem> orderItems = List.of(
-                OrderItem.builder()
-                        .id(1L)
-                        .order(order)
-                        .item(item)
-                        .status(OrderItemStatus.READY)
-                        .itemName("abc 후드티")
-                        .description(null)
-                        .itemPrice(35000L)
-                        .itemCount(1L)
-                        .build()
+                new OrderItem(
+                        order, item, OrderItemStatus.READY,null,"abc 후드티",1L,35000L
+                )
         );
 
         return OrderResponseDto.of(order, orderItems);

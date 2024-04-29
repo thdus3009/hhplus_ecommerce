@@ -55,15 +55,10 @@ public class OrderServiceTest {
 
         given(orderManager.save(any())).willReturn(orderAndOrderItems.getOrder());
         given(orderItemManager.save(any(), any(), any())).willReturn(
-                List.of(OrderItem.builder()
-                        .id(1L)
-                        .order(orderAndOrderItems.getOrder())
-                        .item(items.get(0))
-                        .status(OrderItemStatus.READY)
-                        .itemName("abc 후드티")
-                        .itemCount(1L)
-                        .itemPrice(5000L)
-                        .build()
+                List.of(
+                    new OrderItem(
+                            orderAndOrderItems.getOrder(), items.get(0), OrderItemStatus.READY,null,"abc 후드티",1L,5000L
+                    )
                 )
         );
         // when
