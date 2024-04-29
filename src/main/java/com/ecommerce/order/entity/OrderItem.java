@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
     @Column(name = "id", nullable = false, updatable = false)
     private Long id = 0L;
 
@@ -26,10 +27,12 @@ public class OrderItem {
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
-    @Column(name = "status", nullable = false)
     @Enumerated(EnumType.STRING)
+    @Builder.Default
+    @Column(name = "status", nullable = false)
     private OrderItemStatus status = OrderItemStatus.READY;
 
+    @Builder.Default
     @Column(name = "description", nullable = true)
     private String description = null;
 
@@ -42,4 +45,7 @@ public class OrderItem {
     @Column(name = "item_price", nullable = false)
     private Long itemPrice;
 
+    public OrderItem() {
+
+    }
 }

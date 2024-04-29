@@ -16,6 +16,7 @@ import java.util.UUID;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Builder.Default
     @Column(name = "id", nullable = false, updatable = false)
     private Long id = 0L;
 
@@ -47,4 +48,8 @@ public class Order {
     @CreationTimestamp
     @Column(name="order_date", nullable = false, insertable = true, updatable = false)
     private ZonedDateTime orderDate;
+
+    public Order() {
+
+    }
 }
