@@ -10,5 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: ls -al
+      - uses: actions/checkout@v3
+      - run: ls -al
 
