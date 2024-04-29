@@ -9,7 +9,6 @@ jobs:
   checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: test
       - uses: actions/checkout@v3
       - run: ls -al 
 
