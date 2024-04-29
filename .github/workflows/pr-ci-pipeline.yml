@@ -2,13 +2,13 @@ name: pr-ci-pipeline
 
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [main develop]
   push:
-    branches: [develop, release-*]
+    branches: [develop release-*]
 jobs:
   checkout:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        uses: ls -al
+        run: ls -al
 
