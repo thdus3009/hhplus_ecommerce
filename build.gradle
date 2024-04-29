@@ -3,79 +3,27 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.4'
     id 'io.spring.dependency-management' version '1.1.4'
+
     id 'checkstyle'
     id 'jacoco'
 }
+
+checkstyle {
+    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail
+    configFile = file("${rootDir}/config/gpu-im-checkstyle.xml") // 설정 파일 경로 지정
+    configProperties = ["suppressionFile": "${rootDir}/config/naver-checkstyle-suppressions.xml"]
+    toolVersion = "8.39" // 처음에 낮은 버전을 사용했더니 깨지는 현상이 있었다. 설정파일의 내용에 맞는 버전을 선택
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
 
 group = 'com.specialLecture'
 version = '0.0.1-SNAPSHOT'
 
 java {
     sourceCompatibility = '17'
-}
-
-test {
-    useJUnitPlatform()
-    finalizedBy jacocoTestReport
-}
-
-checkstyle {
-//    maxWarnings = 0 // 규칙이 어긋나는 코드가 하나라도 있을 경우 빌드 fail
-    toolVersion = '10.15.0'
-    configFile = file("${rootDir}/config/checkstyle/google_checks.xml")
-}
-
-jacoco {
-    toolVersion = "0.8.8"
-    reportsDirectory = file("${buildDir}/JacocoTestReport")
-}
-
-jacocoTestReport {
-    dependsOn test
-
-    reports {
-        xml.required = true
-        html.required = true
-        csv.required = false
-    }
-
-    finalizedBy 'jacocoTestCoverageVerification'
-}
-
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            enabled = true
-            element = 'CLASS'
-
-            limit {
-                counter = 'LINE'
-                value = 'COVEREDRATIO'
-                minimum = 0.00
-            }
-
-            limit {
-                counter = 'METHOD'
-                value = 'COVEREDRATIO'
-                minimum = 0.00
-            }
-        }
-    }
-}
-
-task testAndGenerateReport {
-    group 'verification'
-    description 'test w/ jacoco'
-
-    dependsOn ':test', ':jacocoTestReport', ':jacocoTestCoverageVerification'
-
-    tasks.jacocoTestReport.mustRunAfter tasks.test
-    tasks.jacocoTestCoverageVerification.mustRunAfter tasks.jacocoTestReport
-}
-
-
-jar {
-    enabled = false
 }
 
 configurations {
