@@ -38,16 +38,7 @@ public class StubData {
         return new UserPoint(1L, userId, 15000L, ZonedDateTime.now(), null);
     }
     public static OrderAndOrderItems order(Long userId, Long totalPrice){
-        Order order = Order.builder()
-                .id(1L)
-                .uuid("asdf1234")
-                .userId(userId)
-                .totalPrice(totalPrice)
-                .totalCount(1L)
-                .receiverName("김소연")
-                .receiverPhone("01011112222")
-                .receiverAddress("서울특별시 강남구")
-                .build();
+        Order order = new Order("asdf1234",1L,totalPrice,1L,"김소연","01011112222","서울특별시 강남구");
         Item item = new Item(1L, "상품1", 5000L, 1L, ZonedDateTime.now());
         List<OrderItem> orderItems = List.of(
                 OrderItem.builder()

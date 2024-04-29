@@ -16,15 +16,15 @@ public class OrderManager {
     }
 
     public Order save(OrderRequestDto orderRequestDto){
-        Order order = Order.builder()
-                .uuid(UUID.randomUUID().toString())
-                .userId(orderRequestDto.getUserId())
-                .totalPrice(orderRequestDto.getTotalPrice())
-                .totalCount(orderRequestDto.calculateTotalItemCnt())
-                .receiverName(orderRequestDto.getReceiverName())
-                .receiverPhone(orderRequestDto.getReceiverPhone())
-                .receiverAddress(orderRequestDto.getReceiverAddress())
-                .build();
+        Order order = new Order(
+                UUID.randomUUID().toString(),
+                orderRequestDto.getUserId(),
+                orderRequestDto.getTotalPrice(),
+                orderRequestDto.calculateTotalItemCnt(),
+                orderRequestDto.getReceiverName(),
+                orderRequestDto.getReceiverPhone(),
+                orderRequestDto.getReceiverAddress()
+        );
         return orderRepository.save(order);
 
     }

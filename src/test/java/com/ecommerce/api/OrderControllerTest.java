@@ -150,16 +150,7 @@ public class OrderControllerTest {
 
     OrderResponseDto mkOrderResponseDto(){
 
-        Order order = Order.builder()
-                .id(1L)
-                .uuid("asdf1234")
-                .userId(1L)
-                .totalPrice(35000L)
-                .totalCount(1L)
-                .receiverName("김소연")
-                .receiverPhone("01011112222")
-                .receiverAddress("서울특별시 강남구")
-                .build();
+        Order order = new Order("asdf1234",1L,35000L,1L,"김소연","01011112222","서울특별시 강남구");;
         Item item = new Item(1L, "상품1", 5000L, 1L, ZonedDateTime.now());
         List<OrderItem> orderItems = List.of(
                 OrderItem.builder()

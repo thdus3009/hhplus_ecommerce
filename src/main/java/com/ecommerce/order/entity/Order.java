@@ -3,6 +3,7 @@ package com.ecommerce.order.entity;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.ZonedDateTime;
@@ -10,13 +11,12 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
-@Builder
+@NoArgsConstructor
 @Entity
 @Table(name="Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Builder.Default
     @Column(name = "id", nullable = false, updatable = false)
     private Long id = 0L;
 
@@ -47,9 +47,16 @@ public class Order {
 
     @CreationTimestamp
     @Column(name="order_date", nullable = false, insertable = true, updatable = false)
-    private ZonedDateTime orderDate;
+    private ZonedDateTime orderDate = ZonedDateTime.now();
 
-    public Order() {
-
+    public Order(String uuid, Long userId, Long totalPrice, Long totalCount, String receiverName, String receiverPhone, String receiverAddress) {
+        this.uuid = uuid;
+        this.userId = userId;
+        this.totalPrice = totalPrice;
+        this.totalCount = totalCount;
+        this.receiverName = receiverName;
+        this.receiverPhone = receiverPhone;
+        this.receiverAddress = receiverAddress;
     }
+
 }
