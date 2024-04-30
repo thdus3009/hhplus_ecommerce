@@ -75,17 +75,13 @@
   * 유닛 테스트
 
 ## Sequence Diagram
-### 잔액 충전
-![스크린샷 2024-04-05 오후 2 49 14](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/85719f35-0279-4edb-a0f1-8577cda4d91c)
-### 잔액 조회
-![스크린샷 2024-04-05 오후 2 54 49](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/de82a26e-3583-4e3d-b317-1bdb20d6eb90)
-### 상품 조회
-![스크린샷 2024-04-05 오후 3 03 44](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/1c5fdf24-d30f-4601-a7c9-ed3a065b8939)
-### 상품 주문
-![스크린샷 2024-04-05 오후 3 39 40](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/8870531c-020c-4a26-abed-d871b5f56154)
-### 상위 상품 조회
-![스크린샷 2024-04-05 오후 3 44 26](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/133895f8-c94f-4bab-95e6-936ef0549acc)
+[시퀀스 다이어그램](https://github.com/thdus3009/hhplus_ecommerce/blob/main/docs/SequenceDiagram.md)
 
+## Git Branch
+[깃 브랜치 전략](https://github.com/thdus3009/hhplus_ecommerce/blob/main/docs/GitBranch.md)
+
+## 동시성 문제
+[프로젝트에서 발생할 수 있는 동시성 이슈](https://github.com/thdus3009/hhplus_ecommerce/blob/main/docs/ConcurrencyIssue.md)
 
 ## Swagger
 ![스크린샷 2024-04-26 오전 12 06 49](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/f5ea4601-42ea-4b97-b220-bdd30df2edae)
