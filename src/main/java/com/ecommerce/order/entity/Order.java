@@ -1,62 +1,69 @@
 package com.ecommerce.order.entity;
 
-import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-
 import java.time.ZonedDateTime;
 import java.util.List;
-import java.util.UUID;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name="Orders")
+@Table(name = "Orders")
 public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
-    private Long id = 0L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false, updatable = false)
+	private Long id = 0L;
 
-    // uuid(유효아이디)
-    @Column(name="uuid", nullable = false, unique = true)
-    private String uuid;
+	// uuid(유효아이디)
+	@Column(name = "uuid", nullable = false, unique = true)
+	private String uuid;
 
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+	@Column(name = "user_id", nullable = false)
+	private Long userId;
 
-    @Column(name = "total_price", nullable = false)
-    private Long totalPrice;
+	@Column(name = "total_price", nullable = false)
+	private Long totalPrice;
 
-    @Column(name = "total_count", nullable = false)
-    private Long totalCount;
+	@Column(name = "total_count", nullable = false)
+	private Long totalCount;
 
-    @Column(name = "receiver_name", nullable = false)
-    private String receiverName;
+	@Column(name = "receiver_name", nullable = false)
+	private String receiverName;
 
-    @Column(name = "receiver_phone", nullable = false)
-    private String receiverPhone;
+	@Column(name = "receiver_phone", nullable = false)
+	private String receiverPhone;
 
-    @Column(name = "receiver_address", nullable = false)
-    private String receiverAddress;
+	@Column(name = "receiver_address", nullable = false)
+	private String receiverAddress;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<OrderItem> orderItems;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderItem> orderItems;
 
-    @CreationTimestamp
-    @Column(name="order_date", nullable = false, insertable = true, updatable = false)
-    private ZonedDateTime orderDate = ZonedDateTime.now();
+	@CreationTimestamp
+	@Column(name = "order_date", nullable = false, insertable = true, updatable = false)
+	private ZonedDateTime orderDate = ZonedDateTime.now();
 
-    public Order(String uuid, Long userId, Long totalPrice, Long totalCount, String receiverName, String receiverPhone, String receiverAddress) {
-        this.uuid = uuid;
-        this.userId = userId;
-        this.totalPrice = totalPrice;
-        this.totalCount = totalCount;
-        this.receiverName = receiverName;
-        this.receiverPhone = receiverPhone;
-        this.receiverAddress = receiverAddress;
-    }
+	public Order(String uuid, Long userId, Long totalPrice, Long totalCount, String receiverName, String receiverPhone,
+		String receiverAddress) {
+		this.uuid = uuid;
+		this.userId = userId;
+		this.totalPrice = totalPrice;
+		this.totalCount = totalCount;
+		this.receiverName = receiverName;
+		this.receiverPhone = receiverPhone;
+		this.receiverAddress = receiverAddress;
+	}
 
 }
