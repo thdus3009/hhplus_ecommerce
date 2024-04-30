@@ -91,14 +91,6 @@
 ![스크린샷 2024-04-26 오전 12 06 49](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/f5ea4601-42ea-4b97-b220-bdd30df2edae)
 
 
-## 브랜치 전략
-`main` : 운영 서버을 위한 브랜치
-</br>
-`stg` : 운영 환경과 동일한 QA진행용 브랜치
-</br>
-`dev` : 개발 서버을 위한 브랜치
-</br>
-`release/<releaseDate_releaseName>` : 다음 배포를 위한 기능 개발을 위한 브랜치
 
 
 
