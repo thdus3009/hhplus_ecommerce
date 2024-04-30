@@ -1,13 +1,14 @@
 package com.ecommerce.userPoint.domain.repository;
 
-import com.ecommerce.userPoint.entity.UserPoint;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import com.ecommerce.userPoint.entity.UserPoint;
 
 @Repository
 public interface UserPointJpaRepository extends JpaRepository<UserPoint, Long> {
 
-    Optional<UserPoint> findByUserId(Long userId);
+	Optional<UserPoint> findByUserId(Long userId);
 }

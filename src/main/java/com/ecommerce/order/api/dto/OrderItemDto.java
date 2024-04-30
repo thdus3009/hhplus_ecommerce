@@ -8,16 +8,16 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class OrderItemDto {
-    @Positive
-    private Long itemId;
-    @PositiveOrZero
-    private Long itemPrice;
-    @Positive
-    private Long itemCount;
+	@Positive
+	private Long itemId;
+	@PositiveOrZero
+	private Long itemPrice;
+	@Positive
+	private Long itemCount;
 
-    public OrderItemDto(Long itemId, Long itemPrice, Long itemCount){
-        this.itemId = itemId;
-        this.itemPrice = itemPrice;
-        this.itemCount = itemCount;
-    }
+	public OrderItemDto(Long itemId, Long itemPrice, Long itemCount) {
+		this.itemId = itemId;
+		this.itemPrice = itemPrice;
+		this.itemCount = itemCount;
+	}
 }
