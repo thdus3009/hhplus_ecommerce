@@ -17,8 +17,8 @@ import com.ecommerce.order.api.dto.OrderAndOrderItems;
 import com.ecommerce.order.api.dto.OrderItemDto;
 import com.ecommerce.order.api.dto.OrderRequestDto;
 import com.ecommerce.order.api.dto.OrderResponseDto;
-import com.ecommerce.userPoint.domain.service.PointService;
-import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userpoint.domain.service.PointService;
+import com.ecommerce.userpoint.entity.UserPoint;
 
 @Component
 public class OrderUseCase {

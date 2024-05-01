@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.ecommerce.stub.StubData;
-import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userpoint.entity.UserPoint;
 
 public class UserPointEntityTest {
 	private UserPoint userPoint;
