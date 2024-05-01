@@ -10,6 +10,10 @@ spring:
     username: root
     password: '@Hong34040'
 
+  redis:
+    host: localhost
+    port: 6379
+
   jpa:
     open-in-view: true
     hibernate:
@@ -24,6 +28,7 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
+
 
 logging:
   level:

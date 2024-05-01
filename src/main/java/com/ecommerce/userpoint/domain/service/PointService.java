@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.ecommerce.aop.redissonLock.RedissonLock;
 import com.ecommerce.userpoint.api.dto.PointResponseDto;
 import com.ecommerce.userpoint.domain.infrastructure.PointHistoryManager;
 import com.ecommerce.userpoint.domain.infrastructure.PointManager;
@@ -31,6 +32,7 @@ public class PointService {
 	 * @return 저장된 UserPoint 정보
 	 */
 	@Transactional
+	@RedissonLock(key = "T(java.lang.String).format('Point%d', #userId)")
 	public PointResponseDto chargePoint(Long userId, Long points) {
 		UserPoint userPoint = pointManager.check(userId);
 		userPoint = pointManager.chargePoint(userPoint, points);

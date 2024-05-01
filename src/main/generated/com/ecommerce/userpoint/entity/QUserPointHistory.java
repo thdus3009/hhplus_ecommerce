@@ -15,7 +15,7 @@ import com.querydsl.core.types.Path;
 @Generated("com.querydsl.codegen.DefaultEntitySerializer")
 public class QUserPointHistory extends EntityPathBase<UserPointHistory> {
 
-    private static final long serialVersionUID = -437586026L;
+    private static final long serialVersionUID = 266831798L;
 
     public static final QUserPointHistory userPointHistory = new QUserPointHistory("userPointHistory");
 
