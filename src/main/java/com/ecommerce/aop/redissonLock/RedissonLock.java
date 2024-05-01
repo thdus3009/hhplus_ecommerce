@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RedissonLock {
-	// 락의 이름
+	// 락의 이름	ex. UserPoint
 	String key();
 
 	// 락의 시간 단위 = 초단위(s)
@@ -21,4 +21,9 @@ public @interface RedissonLock {
 
 	// 락 임대 시간
 	long leaseTime() default 3L;
+
+	// 분산락을 걸 파라미터 네임	ex. userId
+	String identifier();
+
+	Class<?> paramClassType() default Object.class;
 }

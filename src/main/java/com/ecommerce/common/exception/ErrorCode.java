@@ -14,4 +14,5 @@ public class ErrorCode {
 	public static final String ORDER_ITEM_NOT_FOUND = "주문 상품에 해당하는 상품정보가 없습니다.";
 	public static final String LOCK_NOT_AVAILABLE = "해당 락이 존재하지 않습니다.";
 	public static final String LOCK_INTERRUPTED_ERROR = "";
+	public static final String BAD_LOCK_IDENTIFIER = "락의 키값이 잘못 세팅 되었습니다.";
 }

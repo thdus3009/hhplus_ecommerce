@@ -92,6 +92,8 @@ dependencies {
     implementation 'org.redisson:redisson-spring-boot-starter:3.18.0'
     // aop
     implementation "org.springframework.boot:spring-boot-starter-aop"
+    // AspectJ
+    implementation 'org.aspectj:aspectjrt:1.9.7'
 }
 
 test {
