@@ -36,15 +36,16 @@ public class RedissonLockAop {
 		RedissonLock redissonLock = method.getAnnotation(RedissonLock.class);
 		String baseKey = redissonLock.key();
 
-		String dynamicKey =
-			generateDynamicKey(
-				redissonLock.identifier(),
-				joinPoint.getArgs(),
-				redissonLock.paramClassType(),
-				signature.getParameterNames()
-			);
+		// String dynamicKey =
+		// 	generateDynamicKey(
+		// 		redissonLock.identifier(),
+		// 		joinPoint.getArgs(),
+		// 		redissonLock.paramClassType(),
+		// 		signature.getParameterNames()
+		// 	);
+		String dynamicKey = "";
 
-		RLock rLock = redissonClient.getLock(baseKey + ":" + dynamicKey);
+		RLock rLock = redissonClient.getLock(REDISSON_LOCK_PREFIX + baseKey + ":" + dynamicKey);
 		log.info("method " + method + "/ redisson 키 설정" + baseKey + ":" + dynamicKey);
 		String lockName = rLock.getName();
 		try {

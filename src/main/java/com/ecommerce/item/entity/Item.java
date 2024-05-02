@@ -49,6 +49,13 @@ public class Item {
 		this.createdAt = createdAt;
 	}
 
+	public Item(String name, Long price, Long quantity, ZonedDateTime createdAt) {
+		this.name = name;
+		this.price = price;
+		this.quantity = quantity;
+		this.createdAt = createdAt;
+	}
+
 	public void updateQuantity(Long quantity) {
 		this.quantity = quantity;
 	}

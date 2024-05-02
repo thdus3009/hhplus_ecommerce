@@ -49,4 +49,9 @@ public class ItemManager {
 		itemRepository.saveAll(items);
 	}
 
+	public List<Item> save(Item item, Long quantity) {
+		item.updateQuantity(quantity);
+		return itemRepository.saveAll(List.of(item));
+	}
+
 }
