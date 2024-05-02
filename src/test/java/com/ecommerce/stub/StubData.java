@@ -10,7 +10,7 @@ import com.ecommerce.item.entity.OrderItemStatus;
 import com.ecommerce.order.api.dto.OrderAndOrderItems;
 import com.ecommerce.order.entity.Order;
 import com.ecommerce.order.entity.OrderItem;
-import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userpoint.entity.UserPoint;
 
 public class StubData {
 	// request, response 관련 함수 따로 빼놓기

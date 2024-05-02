@@ -25,8 +25,8 @@ import com.ecommerce.order.api.dto.OrderResponseDto;
 import com.ecommerce.order.domain.service.OrderService;
 import com.ecommerce.order.domain.service.OrderUseCase;
 import com.ecommerce.stub.StubData;
-import com.ecommerce.userPoint.domain.service.PointService;
-import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userpoint.domain.service.PointService;
+import com.ecommerce.userpoint.entity.UserPoint;
 
 @WebMvcTest(OrderUseCase.class)
 public class OrderUseCaseUnitTest {

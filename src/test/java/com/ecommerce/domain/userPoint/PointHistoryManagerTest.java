@@ -6,10 +6,10 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.ecommerce.userPoint.domain.infrastructure.PointHistoryManagerImpl;
-import com.ecommerce.userPoint.domain.repository.UserPointHistoryRepository;
-import com.ecommerce.userPoint.entity.PointStatus;
-import com.ecommerce.userPoint.entity.UserPointHistory;
+import com.ecommerce.userpoint.domain.infrastructure.PointHistoryManagerImpl;
+import com.ecommerce.userpoint.domain.repository.UserPointHistoryRepository;
+import com.ecommerce.userpoint.entity.PointStatus;
+import com.ecommerce.userpoint.entity.UserPointHistory;
 
 public class PointHistoryManagerTest {
 

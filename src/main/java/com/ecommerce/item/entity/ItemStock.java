@@ -28,6 +28,10 @@ public class ItemStock {
 		this.quantity = this.quantity - quantity;
 	}
 
+	public void updateQuantity(Long quantity) {
+		this.quantity = quantity;
+	}
+
 	public void checkEnoughItemStockQuantity(Long quantity) {
 		if (this.quantity < quantity) {
 			throw new IllegalArgumentException("[" + this.itemId + "] 상품 재고가 부족합니다.");

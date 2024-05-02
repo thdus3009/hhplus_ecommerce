@@ -9,14 +9,12 @@ spring:
     url: jdbc:mysql://localhost:3306/hhplus_ecommerce?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root
     password: '@Hong34040'
-
   jpa:
     open-in-view: true
     hibernate:
       ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
     show-sql: true
     database: mysql
     properties:
@@ -24,6 +22,10 @@ spring:
       hibernate:
         format_sql: true
         use_sql_comments: true
+  data:
+    redis:
+      port: 6379
+      host: localhost
 
 logging:
   level:

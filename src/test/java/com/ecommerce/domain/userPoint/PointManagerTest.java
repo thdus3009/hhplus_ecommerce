@@ -11,9 +11,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.ecommerce.stub.StubData;
-import com.ecommerce.userPoint.domain.infrastructure.PointManagerImpl;
-import com.ecommerce.userPoint.domain.repository.UserPointRepository;
-import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userpoint.domain.infrastructure.PointManagerImpl;
+import com.ecommerce.userpoint.domain.repository.UserPointRepository;
+import com.ecommerce.userpoint.entity.UserPoint;
 
 public class PointManagerTest {
 	private UserPointRepository userPointRepository;

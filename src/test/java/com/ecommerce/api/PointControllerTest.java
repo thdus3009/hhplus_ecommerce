@@ -15,9 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.ecommerce.userPoint.api.controller.PointController;
-import com.ecommerce.userPoint.api.dto.PointResponseDto;
-import com.ecommerce.userPoint.domain.service.PointService;
+import com.ecommerce.userpoint.api.controller.PointController;
+import com.ecommerce.userpoint.api.dto.PointResponseDto;
+import com.ecommerce.userpoint.domain.service.PointService;
 
 @WebMvcTest(PointController.class)
 public class PointControllerTest {

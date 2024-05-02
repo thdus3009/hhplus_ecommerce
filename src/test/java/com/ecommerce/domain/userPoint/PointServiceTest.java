@@ -11,12 +11,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.ecommerce.stub.StubData;
-import com.ecommerce.userPoint.api.dto.PointResponseDto;
-import com.ecommerce.userPoint.domain.infrastructure.PointHistoryManager;
-import com.ecommerce.userPoint.domain.infrastructure.PointManager;
-import com.ecommerce.userPoint.domain.service.PointService;
-import com.ecommerce.userPoint.domain.service.PointValidator;
-import com.ecommerce.userPoint.entity.UserPoint;
+import com.ecommerce.userpoint.api.dto.PointResponseDto;
+import com.ecommerce.userpoint.domain.infrastructure.PointHistoryManager;
+import com.ecommerce.userpoint.domain.infrastructure.PointManager;
+import com.ecommerce.userpoint.domain.service.PointService;
+import com.ecommerce.userpoint.domain.service.PointValidator;
+import com.ecommerce.userpoint.entity.UserPoint;
 
 @WebMvcTest(PointService.class)
 public class PointServiceTest {

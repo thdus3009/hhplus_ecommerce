@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 public class SwaggerConfig {
 
 	@Bean
-	public GroupedOpenApi SampleOpenApi() {
+	public GroupedOpenApi sampleOpenApi() {
 		String[] paths = {"/**"};
 
 		return GroupedOpenApi.builder()
