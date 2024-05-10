@@ -1,0 +1,3 @@
+## 사용자 포인트 조회
+GET localhost:8082/points/1
+Content-Type: application/json

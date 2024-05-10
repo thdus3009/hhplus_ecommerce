@@ -59,18 +59,20 @@ public class ItemControllerTest {
 		Long count = 5L;
 		List<PopularItemResponseDto> popularItemDtos = mkPopularItemDto();
 		// given
-		given(itemService.findItems(any()))
+		given(itemService.findItems(anyLong(), anyLong()))
 			.willReturn(popularItemDtos);
 
 		// when
 		MvcResult mvcResult = mockMvc.perform(get("/items")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content("""
-					{
-					"date" : 3,
-					"count" : 5
-					}
-					"""))
+				.param("date", "3")  // "date" 파라미터 추가
+				.param("count", "5"))  // "count" 파라미터 추가
+			// .content("""
+			// 	{
+			// 	"date" : 3,
+			// 	"count" : 5
+			// 	}
+			// 	"""))
 			.andExpect(status().isOk())
 			.andReturn();
 		String content = mvcResult.getResponse().getContentAsString();

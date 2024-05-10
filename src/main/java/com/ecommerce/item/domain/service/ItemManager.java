@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import com.ecommerce.common.exception.CustomException;
 import com.ecommerce.common.exception.ErrorCode;
-import com.ecommerce.item.api.dto.ItemRequestDto;
 import com.ecommerce.item.api.dto.PopularItemResponseDto;
 import com.ecommerce.item.domain.infrastructure.ItemRepository;
 import com.ecommerce.item.entity.Item;
@@ -32,9 +31,9 @@ public class ItemManager {
 		return itemRepository.findByIds(itemIds);
 	}
 
-	public List<PopularItemResponseDto> findItems(ItemRequestDto itemRequestDto) {
-		ZonedDateTime startDate = ZonedDateTime.now().minus(itemRequestDto.getDate(), ChronoUnit.DAYS);
-		return itemRepository.findItems(startDate, itemRequestDto.getCount());
+	public List<PopularItemResponseDto> findItems(Long date, Long count) {
+		ZonedDateTime startDate = ZonedDateTime.now().minus(date, ChronoUnit.DAYS);
+		return itemRepository.findItems(startDate, count);
 	}
 
 	public void updateItemQuantity(List<Item> items, List<ItemStock> updateItemStocks) {
