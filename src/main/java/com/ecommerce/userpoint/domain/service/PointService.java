@@ -32,7 +32,7 @@ public class PointService {
 	 * @return 저장된 UserPoint 정보
 	 */
 	@Transactional
-	@RedissonLock(key = "#userId", identifier = "userId")
+	@RedissonLock(key = "UserPoint", identifier = "userId")
 	public PointResponseDto chargePoint(Long userId, Long points) {
 		UserPoint userPoint = pointManager.check(userId);
 		userPoint = pointManager.chargePoint(userPoint, points);

@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 
 import com.ecommerce.common.exception.CustomException;
 import com.ecommerce.common.exception.ErrorCode;
-import com.ecommerce.item.api.dto.ItemRequestDto;
 import com.ecommerce.item.api.dto.PopularItemResponseDto;
 import com.ecommerce.item.domain.infrastructure.ItemRepository;
 import com.ecommerce.item.domain.service.ItemManager;
@@ -79,7 +78,7 @@ public class ItemManagerTest {
 		// given
 		Long date = 3L;
 		Long count = 5L;
-		ItemRequestDto requestDto = new ItemRequestDto(date, count);
+		// ItemRequestDto requestDto = new ItemRequestDto(date, count);
 		ZonedDateTime startDate = ZonedDateTime.now().minus(date, ChronoUnit.DAYS);
 		List<PopularItemResponseDto> popularItemResponseDtos = List.of(
 			new PopularItemResponseDto(1L, "상품1", 6000L, 34L),
@@ -88,7 +87,7 @@ public class ItemManagerTest {
 		given(itemRepository.findItems(any(), anyLong())).willReturn(popularItemResponseDtos);
 
 		// when
-		List<PopularItemResponseDto> responseDtos = itemManager.findItems(requestDto);
+		List<PopularItemResponseDto> responseDtos = itemManager.findItems(date, count);
 		// then
 		Assertions.assertThat(responseDtos).isNotNull();
 		Assertions.assertThat(responseDtos.size()).isEqualTo(2);

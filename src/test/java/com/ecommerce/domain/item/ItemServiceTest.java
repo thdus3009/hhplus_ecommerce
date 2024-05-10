@@ -12,13 +12,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.redis.core.RedisTemplate;
 
-import com.ecommerce.item.api.dto.ItemRequestDto;
 import com.ecommerce.item.api.dto.ItemResponseDto;
 import com.ecommerce.item.api.dto.PopularItemResponseDto;
 import com.ecommerce.item.domain.service.ItemManager;
 import com.ecommerce.item.domain.service.ItemService;
 import com.ecommerce.item.entity.Item;
+import com.ecommerce.item.entity.PopularItems;
 import com.ecommerce.stub.StubData;
 
 @WebMvcTest(ItemService.class)
@@ -26,10 +27,11 @@ public class ItemServiceTest {
 	@MockBean
 	private ItemManager itemManager;
 	private ItemService itemService;
+	private RedisTemplate<String, PopularItems> redisTemplate;
 
 	@BeforeEach
 	void setUp() {
-		itemService = new ItemService(itemManager);
+		itemService = new ItemService(itemManager, redisTemplate);
 	}
 
 	@Test
@@ -65,14 +67,14 @@ public class ItemServiceTest {
 	@DisplayName("인기 상품 조회")
 	void findItems() {
 		// given
-		ItemRequestDto requestDto = new ItemRequestDto(3L, 5L);
+		//ItemRequestDto requestDto = new ItemRequestDto(3L, 5L);
 		List<PopularItemResponseDto> popularItemResponseDtos = List.of(
 			new PopularItemResponseDto(1L, "상품1", 6000L, 34L),
 			new PopularItemResponseDto(2L, "상품2", 5000L, 23L)
 		);
-		given(itemManager.findItems(any())).willReturn(popularItemResponseDtos);
+		given(itemManager.findItems(anyLong(), anyLong())).willReturn(popularItemResponseDtos);
 		// when
-		List<PopularItemResponseDto> responseDtos = itemService.findItems(requestDto);
+		List<PopularItemResponseDto> responseDtos = itemService.findItems(3L, 5L);
 		// then
 		Assertions.assertThat(responseDtos).isNotNull();
 		Assertions.assertThat(responseDtos.size()).isEqualTo(2);
