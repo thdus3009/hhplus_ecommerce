@@ -86,8 +86,21 @@
 ## Swagger
 ![스크린샷 2024-04-26 오전 12 06 49](https://github.com/thdus3009/hhplus_ecommerce/assets/63095234/f5ea4601-42ea-4b97-b220-bdd30df2edae)
 
+## 책임 분리를 통한 애플리케이션 설계
+### 발생할 수 있는 문제들
+1. 주문 관련 정보를 외부 데이터 플랫폼에 전달하는 요구사항이 필요할 경우, 기존 로직으로 구현했을때 발생하는 문제 
+</br> -> 외부 API의 처리 시간이 길어지면 전체적인 주문관련 API 속도 또한 느려지게 된다. (강력하게 결합된 상태)
+
+2. `@EventListener`를 사용할 경우 발생하는 문제
+</br> -> 트랜잭션 경계와는 상관없이 동작한다. `@EventListener`의 경우 publishEvent() 메서드가 호출되는 시점에서 바로 이벤트를 publishing 한다. exception이 발생한다면 중간 EventListener부분은 Rollback되지 않는 상황 발생 
 
 
+### 해결 방법
+1. `@TransactionalEventListener`를 사용 + phase 옵션을 AFTER_COMMIT으로 설정해서 해당 트랜잭션이 모두 완료된 이후 실행되게 해서 
+</br> 트랜잭션 내의 실패케이스의 경우 실행되지 않게 한다.
+
+2. 해당 외부 API의 호출을 '비동기'로 처리해서 OrderUsecase(상품 주문)의 처리시간에 영향을 주지 않는다.
+</br> (@EventListener, @TransactionalEventListener을 비동기로 사용하려면 따로 `@Async`를 추가해 주어야한다.)
 
 
 
