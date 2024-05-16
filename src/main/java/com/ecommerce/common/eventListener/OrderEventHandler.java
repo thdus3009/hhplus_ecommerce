@@ -1,5 +1,6 @@
 package com.ecommerce.common.eventListener;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
 import org.springframework.transaction.event.TransactionalEventListener;
@@ -17,6 +18,7 @@ import okhttp3.RequestBody;
 public class OrderEventHandler {
 	private final OkHttpClient client = new OkHttpClient();
 
+	@Async("threadPoolTaskExecutor")
 	@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
 	public void orderEventHandler(OrderAndOrderItems event) {
 		String url = "https://test.com";
